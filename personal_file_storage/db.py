@@ -1,5 +1,6 @@
 import pymysql
-from .db_config import host, port, user, password, db
+from .config import host, port, user, password, db
+
 
 def db_execute(sql):
     with pymysql.connect(host=host, port=port, user=user, password=password, db=db) as connection:

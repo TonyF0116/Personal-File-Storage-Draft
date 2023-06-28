@@ -3,8 +3,8 @@ CREATE TABLE users
 (
 AccountId INT AUTO_INCREMENT, 
 UserName VARCHAR(50),
-Password VARCHAR(64),           // stores SHA256 of the password
-Administrator INT,              // 0 is normal user, 1 is administrator
+Password VARCHAR(64),           # stores SHA256 of the password
+Administrator INT,              # 0 is normal user, 1 is administrator
 PRIMARY KEY (AccountId)
 );
 
@@ -14,7 +14,7 @@ CREATE TABLE files
 FileId INT AUTO_INCREMENT, 
 AccountId INT,
 FileName VARCHAR(128), 
-FileType INT,                   // 0 is pic, 1 is pdf, 2 is excel
+FileType INT,                   # 0 is pic, 1 is pdf, 2 is excel
 PRIMARY KEY (FileId),
-FOREIGN KEY (AccountId) REFERENCES User(AccountId)
+FOREIGN KEY (AccountId) REFERENCES users(AccountId)
 );

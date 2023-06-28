@@ -1,16 +1,18 @@
-# User-Management-System
+# Personal-File-System
 
-前后分离+Swagger+数据库(MySql) +Redis(可选) + Log + Excel + PDF  + 图片 + Email + JWT(可选)  + 注释
+A personal file system, in which you can store and view pictures and other files. You can also create and edit simple excel and pdf files.
 
-npm run serve
+Run with the following steps:
 
-UPDATE mysql.user SET Host = '%' WHERE User = 'user';
+1. Run pip install -r requirements.txt
+2. Modify database configurations in personal_file_storage/db_config.py
+3. Run app.py
 
-
-1.登录页
-2.JWT
-3.文件主页
-4.图片
-5.PDF/Excel/Email
-6.Swagger
-7.Redis/Log
+To implement:
+1. ~~登录页~~
+2. JWT
+3. 文件主页
+4. 图片
+5. PDF/Excel/Email
+6. Swagger
+7. Redis（excel模板）/Log
