@@ -1,3 +1,4 @@
-flask
-flask_cors
-pymysql
+Flask
+flask-cors
+PyMySQL
+PyJWT

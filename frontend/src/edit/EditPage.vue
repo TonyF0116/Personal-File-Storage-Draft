@@ -1,6 +1,5 @@
 <template>
   <div class="t1">{{ msg }}</div>
-  <h3 style="text-align: center;">Welcome, {{ username }}</h3>
 </template>
 
 <script>
@@ -9,26 +8,18 @@ axios.defaults.baseURL = 'http://127.0.0.1:5000';
 
 
 export default {
-  mounted() {
-    this.get_data()
-  },
   data() {
     return {
-      msg: "Index page",
-      username: ""
+      msg: "Edit page",
     }
   },
   methods: {
-    // Called on Index page mounted, get necessary user data
-    get_data() {
-      axios.post('/index/get_data', {
-      }).then(response => {
-        this.username = response.data;
-      });
-    }
+
   }
 }
 </script>
+
+
 
 <style>
 .t1 {

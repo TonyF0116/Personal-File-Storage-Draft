@@ -4,7 +4,6 @@ from ..db import db_execute
 # Create user in the database with the input username and password_hash, set as non-administrator by default
 def sign_up(username, password_hash):
     sql = '''INSERT INTO users(UserName, Password, Administrator) VALUES ('{}', '{}', 0);'''
-    print(sql.format(username, password_hash))
     db_execute(sql.format(username, password_hash))
 
 
@@ -17,7 +16,6 @@ def create_user(username, password_hash, administrator):
 # Return the number of the given username in the database
 def check_username(username):
     sql = '''SELECT * FROM users WHERE UserName = '{}';'''
-    print(db_execute(sql.format(username)))
     return len(db_execute(sql.format(username)))
 
 

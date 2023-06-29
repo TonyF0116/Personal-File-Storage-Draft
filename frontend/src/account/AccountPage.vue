@@ -9,11 +9,11 @@
       <div class="popup-content">
         <div class="form-group">
           <label for="username">Username </label>
-          <input type="text" name="username" id="username" v-model="username" />
+          <input type="text" name="username" id="username" v-model="username" @keyup.enter="enter_handler" />
         </div>
         <div class="form-group">
           <label for="password">Password </label>
-          <input type="password" name="password" id="password" v-model="password" />
+          <input type="password" name="password" id="password" v-model="password" @keyup.enter="enter_handler" />
         </div>
         <div class="warning-content">{{ warning }}</div>
         <div v-if="login_pressed"><button class="b3" @click="login">Login</button></div>
@@ -30,7 +30,6 @@ axios.defaults.baseURL = 'http://127.0.0.1:5000';
 
 
 export default {
-  // name: 'App',
   data() {
     return {
       msg: "Welcome!",
@@ -42,6 +41,14 @@ export default {
     }
   },
   methods: {
+    // Handle enter pressed when user is in input box
+    enter_handler() {
+      if (this.login_pressed) {
+        this.login()
+      } else {
+        this.signup()
+      }
+    },
     // Show login window when login is clicked
     togglePopup_login() {
       this.isPopupVisible = !this.isPopupVisible;
@@ -78,7 +85,7 @@ export default {
         return this.check_empty()
       }
       // Send login request with the input username and password hash
-      axios.post('/login', {
+      axios.post('/account/login', {
         username: this.username,
         password: SHA256(this.password).toString()
       })
@@ -100,7 +107,7 @@ export default {
         return this.check_empty()
       }
       // Send signup request with the input username and password hash
-      axios.post('/signup', {
+      axios.post('/account/signup', {
         username: this.username,
         password: SHA256(this.password).toString()
       })

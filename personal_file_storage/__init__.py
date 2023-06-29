@@ -1,5 +1,5 @@
 from flask import Flask
-from .views import account, index
+from .views import account, index, edit, serve
 from flask_cors import CORS
 
 
@@ -15,7 +15,9 @@ def create_app(test_config=None):
     else:
         app.config.from_mapping(test_config)
 
+    app.register_blueprint(serve.blueprint)
     app.register_blueprint(account.blueprint)
     app.register_blueprint(index.blueprint)
+    app.register_blueprint(edit.blueprint)
 
     return app
