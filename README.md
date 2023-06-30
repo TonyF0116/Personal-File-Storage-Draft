@@ -8,7 +8,8 @@ Run with the following steps:
 
 1. Run pip install -r requirements.txt
 2. Modify database configurations in personal_file_storage/config.py
-3. Run app.py
+3. Navigate the terminal to folder 'Personal-File-Storage', which contains this 'README.md' (affect file storing directory)
+4. Run app.py
 
 To implement:
 1. ~~Account Page~~

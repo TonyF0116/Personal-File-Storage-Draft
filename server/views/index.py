@@ -1,6 +1,7 @@
 from flask import Blueprint, request, redirect, url_for, render_template, make_response
 import jwt
 from ..config import key
+import os
 
 # Handle requests from the account page
 blueprint = Blueprint('index', __name__)
@@ -45,6 +46,19 @@ def index():
 # Called on Vue rendering the index page, sends the basic information of the user to the client
 @blueprint.route('/index/get_data', methods=['POST'])
 def get_data():
-    token = request.cookies.get('token')
-    payload = jwt.decode(jwt=token, key=key, algorithms=["HS256"])
-    return payload['username']
+    # token = request.cookies.get('token')
+    # payload = jwt.decode(jwt=token, key=key, algorithms=["HS256"])
+    # return payload['username']
+    return {'username': 'abc',
+            'files': [{'filename': 'a.txt', 'last_modified': '2023-1-1'},
+                      {'filename': 'b.txt', 'last_modified': '2023-1-1'},
+                      {'filename': 'c.txt', 'last_modified': '2023-1-1'}]}
+
+
+@blueprint.route('/index/file_upload', methods=['POST'])
+def file_upload():
+    file = request.files['file']
+    if not os.path.exists('server/files/'):
+        os.mkdir('server/files/')
+    file.save('server/files/{}'.format(file.filename))
+    return 'File uploaded successfully.'

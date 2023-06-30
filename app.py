@@ -1,4 +1,4 @@
-from personal_file_storage import create_app
+from server import create_app
 
 
 app = create_app()
